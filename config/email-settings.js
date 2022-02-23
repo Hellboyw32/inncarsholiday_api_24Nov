@@ -1,23 +1,24 @@
 const nodemailer = require("nodemailer");
 const fs = require("fs");
+const transport = require('nodemailer-smtp-transport');
 
-const smtpTransport = nodemailer.createTransport({
-  host: "131.153.58.69",
-  port: 25,
-  secure: false,
-  logger: true,
-  requireTLS: true,
-  debug: false,
-  ignoreTLS: true, // add this
-  auth: {
-    user: "booking@inncarsholiday.com",
-    pass: "w#L20ls2",
-  },
-  tls: {
-    rejectUnauthorized: false,
-  },
-});
-
+const smtpTransport = nodemailer.createTransport(transport({
+   name:"hostgator",
+    host: "mail.mauriconnect.com",
+    port: 465,
+    secure: true,
+    logger: true,
+    requireTLS: true,
+    debug: false,
+    ignoreTLS: true, 
+    auth: {
+      user: "booking-inncarholidays@mauriconnect.com",
+      pass: "gatorbooking32$"
+    },
+    tls: {
+        rejectUnauthorized: false
+    },
+}));
 const readHTMLFile = function (path, callback) {
   fs.readFile(path, { encoding: "utf-8" }, function (err, html) {
     if (err) {
