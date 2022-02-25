@@ -73,7 +73,7 @@ var smtpTransport = nodemailer.createTransport({
 router.post("/sendemail", function (request, response) {
   const mailOptions = {
     from: "booking-inncarholidays@mauriconnect.com",
-    to: "amitoj.social@gmail.com",
+    to: "ram.juttlegadoo@gmail.com",
     subject: "Test confirmation email.",
     generateTextFromHTML: true,
     html: "<b>This is a test email using Nodemailer that we are checking. If you receive this email then it's working fine.</b>",
@@ -89,7 +89,7 @@ router.post("/trysendemail", function (request, response) {
   console.log("Access Token",accessToken);
   const mailOptions = {
     from: "booking-inncarholidays@mauriconnect.com",
-    to: "amit.technocodz@gmail.com",
+    to: "ram.juttlegadoo@gmail.com",
     subject: "Node.js Email with Secure OAuth",
     generateTextFromHTML: true,
     html: "<b>test</b>",

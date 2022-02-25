@@ -6,6 +6,10 @@ var Sequelize = require("sequelize");
 
 var handlebars = require('handlebars');
 var pdf = require('html-pdf');
+const nodemailer = require("nodemailer");
+
+const smtpTransporter = require('nodemailer-smtp-transport');
+
 
 const {
   smtpTransport,
@@ -19,6 +23,24 @@ const {
 // const Op = require("sequelize").Op;
 // const { google } = require("googleapis");
 // const { print } = require("util");
+
+var transporter = nodemailer.createTransport(smtpTransporter({
+  name:"hostgator",
+  host: "mail.mauriconnect.com",
+  port: 465,
+  secure: true,
+  logger: true,
+  requireTLS: true,
+  debug: false,
+  ignoreTLS: true, 
+  auth: {
+    user: "booking-inncarholidays@mauriconnect.com",
+    pass: "gatorbooking32$"
+  },
+  tls: {
+      rejectUnauthorized: false
+  },
+}));
 
 async function generatePDFDetails(carrentalId) {
   let printableModel = {};
@@ -164,19 +186,21 @@ router.post("/sendconfirmationinvoice/:carrentalId", (request, response) => {
               res
             );
             SaveInvoiceName(printableModel);
-            smtpTransport.sendMail(mailOptions, (error, res) => {
+            transporter.sendMail(mailOptions, (error, res) => {
               if (error) {
+                console.log(error);
                 result.data = error;
                 result.returnCode = -1;
                 result.returnMessage = "Your email couldnt be sent!";
                 response.json(result);
               } else {
+                console.log("success");
                 result.data = printableModel;
                 result.returnCode = 1;
                 result.returnMessage = "Your email has been sent!";
                 response.json(result);
               }
-              smtpTransport.close();
+              transporter.close();
             });
           });
       });
