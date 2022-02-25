@@ -203,7 +203,7 @@ router.post("/sendtosubscriber", function (request, response) {
   let result = { returnCode: 0, data: null, returnMessage: "" };
   console.log("Access Token", accessToken);
   const mailOptions = {
-    from: "booking@inncarsholiday.com",
+    from: "booking-inncarholidays@mauriconnect.com",
     to: request.body.To,
     subject: request.body.Subject,
     generateTextFromHTML: true,
@@ -228,10 +228,10 @@ router.post("/sendtosubscriber", function (request, response) {
 router.post("/sendRevert", function (request, response) {
   let result = { returnCode: 0, data: null, returnMessage: "" };
   const mailOptions = {
-    from: "booking@inncarsholiday.com",
+    from: "booking-inncarholidays@mauriconnect.com",
     to: request.body.To,
     subject: request.body.Subject,
-    cc: ["info@mauriconnect.com", "booking@inncarsholiday.com"],
+    cc: ["info@mauriconnect.com", "booking-inncarholidays@mauriconnect.com"],
     text: request.body.Message,
   };
   smtpTransport.sendMail(mailOptions, (error, res) => {
@@ -261,10 +261,10 @@ router.post("/sendRevert", function (request, response) {
 router.post("/postcontact", function (request, response) {
   let result = { returnCode: 0, data: null, returnMessage: "" };
   const mailOptions = {
-    from: "booking@inncarsholiday.com",
-    to: "booking@inncarsholiday.com",
+    from: "booking-inncarholidays@mauriconnect.com",
+    to: "booking-inncarholidays@mauriconnect.com",
     subject: "Customert Inquery From: " + request.body.Email,
-    cc: ["info@mauriconnect.com", "booking@inncarsholiday.com"],
+    cc: ["info@mauriconnect.com", "booking-inncarholidays@mauriconnect.com"],
     text: request.body.Message,
   };
   ContactUs.create(request.body)

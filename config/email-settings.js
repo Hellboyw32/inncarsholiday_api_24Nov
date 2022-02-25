@@ -51,7 +51,7 @@ const genUniqueId = function generateId(length) {
 const pdfOptions = {
   "format": "A4",
   "zoomFactor":"0.5",
-  "timeout": '100000', 
+  "timeout": '300000000', 
   // "viewportSize": {
   // width: 500,
   // height: 600
@@ -75,9 +75,9 @@ const generateMailOptions = function (To, BookingId, htmlToSend, invoicePath) {
     console.log("invoicePath", invoicePath);
     invSplit = invoicePath.filename.split("//");
   return (mailOptions = {
-    from: "booking@inncarsholiday.com",
+    from: "booking-inncarholidays@mauriconnect.com",
     to: To,
-    cc: ["info@mauriconnect.com", "booking@inncarsholiday.com"],
+    cc: ["info@mauriconnect.com", "booking-inncarholidays@mauriconnect.com"],
     subject: "Your booking confirmation: " + BookingId,
     generateTextFromHTML: true,
     html: htmlToSend,

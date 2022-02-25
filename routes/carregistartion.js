@@ -63,7 +63,7 @@ var smtpTransport = nodemailer.createTransport({
   debug: true,
   ignoreTLS: true, // add this 
   auth: {
-    user: "booking@inncarsholiday.com",
+    user: "booking-inncarholidays@mauriconnect.com",
     pass: "w#L20ls2"
   }, tls: {
     rejectUnauthorized: false
@@ -72,7 +72,7 @@ var smtpTransport = nodemailer.createTransport({
 
 router.post("/sendemail", function (request, response) {
   const mailOptions = {
-    from: "booking@inncarsholiday.com",
+    from: "booking-inncarholidays@mauriconnect.com",
     to: "amitoj.social@gmail.com",
     subject: "Test confirmation email.",
     generateTextFromHTML: true,
@@ -88,7 +88,7 @@ router.post("/sendemail", function (request, response) {
 router.post("/trysendemail", function (request, response) {
   console.log("Access Token",accessToken);
   const mailOptions = {
-    from: "booking@inncarsholiday.com",
+    from: "booking-inncarholidays@mauriconnect.com",
     to: "amit.technocodz@gmail.com",
     subject: "Node.js Email with Secure OAuth",
     generateTextFromHTML: true,
