@@ -7,8 +7,8 @@ const globalOptions = {
 };
 if(CUSTOM_NODE_ENV === 'deploy') {
   //sqlConnectionobj = new Sequelize('qacarrental', 'dbuser_inncarsholiday', 'view4me_inncarsholiday', {
-  sqlConnectionobj = new Sequelize('phcarrental', 'dbuser_inncarsholiday', 'view4me_inncarsholiday', {
-    host: '131.153.58.69',
+  sqlConnectionobj = new Sequelize('phcarrental', 'wbpoc', 'sql@tfs2008', {
+    host: '102.222.106.122',
     dialect: 'mysql',
     logging: false,
     operatorsAliases: false,

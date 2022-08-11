@@ -55,7 +55,7 @@ const accessToken = oauth2Client.getAccessToken();
 
 
 var smtpTransport = nodemailer.createTransport({
-  host: "131.153.58.69",  
+  host: "102.222.106.122",  
   port: 25,
   secure: false,
   logger: true,
