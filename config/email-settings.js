@@ -3,8 +3,8 @@ const fs = require("fs");
 const transport = require('nodemailer-smtp-transport');
 
 const smtpTransport = nodemailer.createTransport(transport({
-   name:"hostgator",
-    host: "mail.mauriconnect.com",
+   name:"web1-mu1.cloud.mu",
+    host: "mail.inncarsholiday.com",
     port: 465,
     secure: true,
     logger: true,
@@ -12,8 +12,8 @@ const smtpTransport = nodemailer.createTransport(transport({
     debug: false,
     ignoreTLS: true, 
     auth: {
-      user: "booking-inncarholidays@mauriconnect.com",
-      pass: "gatorbooking32$"
+      user: "booking@inncarsholiday.com",
+      pass: "bookMe@123Inncars"
     },
     tls: {
         rejectUnauthorized: false

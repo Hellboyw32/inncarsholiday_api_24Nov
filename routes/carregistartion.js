@@ -55,7 +55,7 @@ const OAuth2 = google.auth.OAuth2;
 
 
 var smtpTransport = nodemailer.createTransport({
-  host: "102.222.106.122",  
+  host: "mail.inncarsholiday.com",  
   port: 25,
   secure: false,
   logger: true,
