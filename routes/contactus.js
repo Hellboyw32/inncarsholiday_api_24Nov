@@ -34,8 +34,8 @@ var transporter = nodemailer.createTransport(smtpTransporter({
   debug: false,
   ignoreTLS: true, 
   auth: {
-    user: "booking-inncarholidays@mauriconnect.com",
-    pass: "gatorbooking32$"
+    user: "booking@inncarsholiday.com",
+    pass: "bookMe@123Inncars"
   },
   tls: {
       rejectUnauthorized: false
@@ -227,7 +227,7 @@ router.post("/sendtosubscriber", function (request, response) {
   let result = { returnCode: 0, data: null, returnMessage: "" };
   console.log("Access Token", accessToken);
   const mailOptions = {
-    from: "booking-inncarholidays@mauriconnect.com",
+    from: "booking@inncarsholiday.com",
     to: request.body.To,
     subject: request.body.Subject,
     generateTextFromHTML: true,
@@ -252,10 +252,10 @@ router.post("/sendtosubscriber", function (request, response) {
 router.post("/sendRevert", function (request, response) {
   let result = { returnCode: 0, data: null, returnMessage: "" };
   const mailOptions = {
-    from: "booking-inncarholidays@mauriconnect.com",
+    from: "booking@inncarsholiday.com",
     to: request.body.To,
     subject: request.body.Subject,
-    cc: ["info@mauriconnect.com", "booking-inncarholidays@mauriconnect.com"],
+    cc: ["info@mauriconnect.com", "booking@inncarsholiday.com"],
     text: request.body.Message,
   };
   smtpTransport.sendMail(mailOptions, (error, res) => {
@@ -285,10 +285,10 @@ router.post("/sendRevert", function (request, response) {
 router.post("/postcontact", function (request, response) {
   let result = { returnCode: 0, data: null, returnMessage: "" };
   const mailOptions = {
-    from: "booking-inncarholidays@mauriconnect.com",
-    to: "booking-inncarholidays@mauriconnect.com",
+    from: "booking@inncarsholiday.com",
+    to: "booking@inncarsholiday.com",
     subject: "Customert Inquery From: " + request.body.Email,
-    cc: ["info@mauriconnect.com", "booking-inncarholidays@mauriconnect.com"],
+    cc: ["info@mauriconnect.com", "booking@inncarsholiday.com"],
     text: request.body.Message,
   };
   ContactUs.create(request.body)
