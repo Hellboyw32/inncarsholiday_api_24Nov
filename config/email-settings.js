@@ -4,7 +4,7 @@ const transport = require('nodemailer-smtp-transport');
 
 const smtpTransport = nodemailer.createTransport(transport({
    name:"web1-mu1.cloud.mu",
-    host: "mail.inncarsholiday.com",
+    host: "102.222.106.240",
     port: 465,
     secure: true,
     logger: true,

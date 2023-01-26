@@ -26,7 +26,7 @@ const {
 
 var transporter = nodemailer.createTransport(smtpTransporter({
   name:"hostgator",
-  host: "mail.inncarsholiday.com",
+  host: "102.222.106.240",
   port: 465,
   secure: true,
   logger: true,
