@@ -54,6 +54,12 @@
   "CTABlockBox2": "Les marques aux prix les plus bas !",
   "CTABlockBox3": "Les gens adorent nos offres !",
   "CTABlockBox4": "Variété de voitures",
+  "ErrorMessages": {
+    "missingPickupLocation": "Veuillez sélectionner un lieu de ramassage !",
+    "missingDropoffLocation": "Veuillez sélectionner un lieu de dépôt !",
+    "missingPickupDate": "Veuillez choisir une date de ramassage valide !",
+    "missingDropoffDate": "Veuillez choisir une date de dépôt valide !"
+  },
 
   "_comment2": "------------below keys are for car listing page------------",
   "AddressLine1IsRequired": "La ligne d'adresse 1 est requise.",

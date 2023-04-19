@@ -52,6 +52,12 @@
   "CTABlockBox2": "Brands At Lowest Prices!",
   "CTABlockBox3": "People love our offers!",
   "CTABlockBox4": "Car Variety",
+  "ErrorMessages": {
+    "missingPickupLocation": "Please, select a pickup location!",
+    "missingDropoffLocation": "Please, select a dropoff location!",
+    "missingPickupDate": "Please, pick a valid pickup date!",
+    "missingDropoffDate": "Please, pick a valid dropoff date!"
+  },
 
   "_comment2": "------------below keys are for car listing page------------",
   "AddressLine1IsRequired": "Address line 1 is required.",
