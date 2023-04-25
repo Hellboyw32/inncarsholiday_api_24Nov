@@ -60,6 +60,16 @@
     "missingPickupDate": "Veuillez choisir une date de ramassage valide !",
     "missingDropoffDate": "Veuillez choisir une date de dépôt valide !"
   },
+  "HowWeWork": {
+    "title": "COMMENT NOUS TRAVAILLONS",
+    "description": "Conduisez vers une aventure et revenez en 5 étapes simples",
+    "workBoxes": {
+      "search": "Recherche",
+      "select": "Sélectionner",
+      "book": "Réserver",
+      "voucher": "Bon de réduction"
+    }
+  },
 
   "_comment2": "------------below keys are for car listing page------------",
   "AddressLine1IsRequired": "La ligne d'adresse 1 est requise.",
