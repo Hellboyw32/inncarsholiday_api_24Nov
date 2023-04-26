@@ -58,6 +58,16 @@
     "missingPickupDate": "Please, pick a valid pickup date!",
     "missingDropoffDate": "Please, pick a valid dropoff date!"
   },
+  "HowWeWork": {
+    "title": "HOW WE WORKS",
+    "description": "Drive yourself to an adventure and back in 5 simple steps",
+    "workBoxes": {
+      "search": "Search",
+      "select": "Select",
+      "book": "Book",
+      "voucher": "Voucher"
+    }
+  },
   "CarTypeCarousel": {
     "seats": "Seats",
     "luggage": "Luggage",
