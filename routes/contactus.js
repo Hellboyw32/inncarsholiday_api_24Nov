@@ -287,8 +287,8 @@ router.post("/postcontact", function (request, response) {
   const mailOptions = {
     from: "booking@inncarsholiday.com",
     to: "booking@inncarsholiday.com",
-    subject: "Customert Inquery From: " + request.body.Email,
-    cc: ["info@mauriconnect.com", "booking@inncarsholiday.com"],
+    subject: "Customer Enquiry From: " + request.body.Email,
+    cc: ["info@mauriconnect.com", "booking@inncarsholiday.com",request.body.Email],
     text: request.body.Message,
   };
   ContactUs.create(request.body)
