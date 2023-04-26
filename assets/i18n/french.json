@@ -60,6 +60,15 @@
     "missingPickupDate": "Veuillez choisir une date de ramassage valide !",
     "missingDropoffDate": "Veuillez choisir une date de dépôt valide !"
   },
+  "CarTypeCarousel": {
+    "seats": "Sièges",
+    "luggage": "Bagage",
+    "door": "Porte",
+    "gear": "Engrenage",
+    "cta": {
+      "prefix": "À partir de"
+    }
+  },
 
   "_comment2": "------------below keys are for car listing page------------",
   "AddressLine1IsRequired": "La ligne d'adresse 1 est requise.",

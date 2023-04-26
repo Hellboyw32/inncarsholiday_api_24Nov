@@ -58,6 +58,15 @@
     "missingPickupDate": "Please, pick a valid pickup date!",
     "missingDropoffDate": "Please, pick a valid dropoff date!"
   },
+  "CarTypeCarousel": {
+    "seats": "Seats",
+    "luggage": "Luggage",
+    "door": "Door",
+    "gear": "Gear",
+    "cta": {
+      "prefix": "From"
+    }
+  },
 
   "_comment2": "------------below keys are for car listing page------------",
   "AddressLine1IsRequired": "Address line 1 is required.",
