@@ -70,6 +70,15 @@
       "voucher": "Bon de réduction"
     }
   },
+  "CarTypeCarousel": {
+    "seats": "Sièges",
+    "luggage": "Bagage",
+    "door": "Porte",
+    "gear": "Engrenage",
+    "cta": {
+      "prefix": "À partir de"
+    }
+  },
 
   "_comment2": "------------below keys are for car listing page------------",
   "AddressLine1IsRequired": "La ligne d'adresse 1 est requise.",
@@ -303,5 +312,19 @@
   "TryAgain": "Réessayer",
   "-----------comment10": "--------Footer page----------",
   "InnCarHolidaysIsYour": "InnCarHolidays, votre partenaire de location de voitures de confiance. Vous apporter les meilleures voitures au prix le plus bas. Votre guichet unique pour la location de voitures.",
-  "Subscribe": "Souscrire"
+  "Subscribe": "Souscrire",
+  "FooterSummaryContent": {
+    "location": {
+      "title": "1000+ Emplacements",
+      "description": "Offrir des sourires, partout, à temps"
+    },
+    "customers": {
+      "title": "5000+ Clients",
+      "description": "À travers le monde"
+    },
+    "payments": {
+      "title": "100% Paiements sécurisés",
+      "description": "Toutes les principales cartes de crédit et de débit acceptées"
+    }
+  }
 }

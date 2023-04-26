@@ -68,6 +68,15 @@
       "voucher": "Voucher"
     }
   },
+  "CarTypeCarousel": {
+    "seats": "Seats",
+    "luggage": "Luggage",
+    "door": "Door",
+    "gear": "Gear",
+    "cta": {
+      "prefix": "From"
+    }
+  },
 
   "_comment2": "------------below keys are for car listing page------------",
   "AddressLine1IsRequired": "Address line 1 is required.",
@@ -290,5 +299,19 @@
   "TryAgain": "Try Again",
 
   "-----------comment10": "--------Footer page----------",
-  "InnCarHolidaysIsYour": "InnCarHolidays your trusted car rental partner. Bringing you the best cars at lowest price. Your one stop shop for car rental."
+  "InnCarHolidaysIsYour": "InnCarHolidays your trusted car rental partner. Bringing you the best cars at lowest price. Your one stop shop for car rental.",
+  "FooterSummaryContent": {
+    "location": {
+      "title": "1000+ Locations",
+      "description": "Delivering Smiles, Anywhere, On Time"
+    },
+    "customers": {
+      "title": "5000+ Customers",
+      "description": "Across the globe"
+    },
+    "payments": {
+      "title": "100% Secure Payments",
+      "description": "All major Credit & Debit cards accepted"
+    }
+  }
 }
