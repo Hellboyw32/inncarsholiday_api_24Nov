@@ -30,7 +30,7 @@ router.post("/getlist", (req, res) => {
   //let buff = Buffer.from(req.params.Url, 'base64');
   //let text = buff.toString('ascii');
   //console.log("base64",text);
-  CountryConfig.findAll()
+  CountryConfig.findAll({ where: { IsActive: true }})
     .then((data) => {
       if (data != null) {
         result.returnCode = 1;
