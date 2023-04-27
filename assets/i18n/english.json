@@ -278,6 +278,32 @@
   "AllBrandsOnOneScreen": "all brands on one screen",
   "Islands": "Islands",
   "Loading": "Loading",
+  "BookingUserLogin": {
+    "title": "Please Login to Continue My Booking",
+    "form": {
+      "fields": {
+        "email": {
+          "label": "E-mail",
+          "validationMessages": {
+            "required": "Email is required!",
+            "invalid": "Please provide a valid email address!"
+          }
+        },
+        "orderNumber": {
+          "label": "Order / Voucher number",
+          "validationMessages": {
+            "required": "Order number is required!"
+          }
+        },
+        "rememberMe": {
+          "label": "Remember me?"
+        },
+        "submitButton": {
+          "label": "Login"
+        }
+      }
+    }
+  },
 
   "_comment9": "------------available-cars html------------",
   "Close": "Close",
