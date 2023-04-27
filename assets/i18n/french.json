@@ -292,6 +292,33 @@
   "AllBrandsOnOneScreen": "toutes les marques sur un seul écran",
   "Iles": "îles",
   "Chargement": "Chargement",
+  "BookingUserLogin": {
+    "title": "Veuillez vous connecter pour continuer la réservation",
+    "form": {
+      "fields": {
+        "email": {
+          "label": "Courriel",
+          "validationMessages": {
+            "required": "L'e-mail est requis !",
+            "invalid": "Veuillez fournir une adresse e-mail valide !"
+          }
+        },
+        "orderNumber": {
+          "label": "Numéro de commande / bon",
+          "validationMessages": {
+            "required": "Le numéro de commande est requis !"
+          }
+        },
+        "rememberMe": {
+          "label": "Se souvenir de moi ?"
+        },
+        "submitButton": {
+          "label": "Connexion"
+        }
+      }
+    }
+  },
+
   "_comment9": "------------available-cars html------------",
   "Close": "Fermer",
   "JustBookedACarInMumbaiFromCanada": "Je viens de réserver! Une voiture à Mumbai en provenance du Canada.",
