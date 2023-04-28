@@ -38,6 +38,11 @@ const CountryConfig = sequelize.define(
         CountryName: {
             type: Sequelize.STRING,
             allowNull: true,
+        },
+        IsActive:{
+            type: Sequelize.BOOLEAN,
+            allowNull: false,
+            defaultValue: true
         }
     },
     globalOptions
