@@ -248,10 +248,12 @@
   "WriteUsAnEmail": "Écrivez-nous un e-mail",
   "ForAllQuestions": "Pour toutes les questions concernant les réservations futures et les locations de voitures en cours, veuillez nous écrire un e-mail dans la langue qui vous convient le mieux.",
   "NewBookingAndExistingBooking": "Nouvelles réservations et réservations existantes",
-  "AfterRental": "After Rental",
-  "ForCancellation": "For Cancellation",
+  "AfterRental": "Après la location",
+  "ForCancellation": "En cas d'annulation",
   "CancellationCanBeMade": "L'annulation peut être effectuée via le",
   "Section": "section",
+  "Submit":"Soumettre",
+  "WorkingHoursValue" : "Lundi-Dimanche",
 
   "_comment7": "------------below keys are for login page------------",
 
