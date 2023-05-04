@@ -252,8 +252,8 @@
   "ForCancellation": "En cas d'annulation",
   "CancellationCanBeMade": "L'annulation peut être effectuée via le",
   "Section": "section",
-  "Submit":"Soumettre",
-  "WorkingHoursValue" : "Lundi-Dimanche",
+  "Submit": "Soumettre",
+  "WorkingHoursValue": "Lundi-Dimanche",
 
   "_comment7": "------------below keys are for login page------------",
 
@@ -355,5 +355,10 @@
       "title": "100% Paiements sécurisés",
       "description": "Toutes les principales cartes de crédit et de débit acceptées"
     }
+  },
+
+  "-----------comment11": "--------Toasters----------",
+  "Toasters": {
+    "bookingSuccess": "Réservation Ajouter avec succès"
   }
 }
