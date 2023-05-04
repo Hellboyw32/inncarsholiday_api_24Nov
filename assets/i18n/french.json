@@ -73,8 +73,10 @@
   "CarTypeCarousel": {
     "seats": "Sièges",
     "luggage": "Bagage",
-    "door": "Porte",
+    "door": "Portes",
     "gear": "Engrenage",
+    "fuel": "Carburant",
+    "airCondition": "Climatisation",
     "cta": {
       "prefix": "À partir de"
     }
