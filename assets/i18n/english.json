@@ -71,8 +71,10 @@
   "CarTypeCarousel": {
     "seats": "Seats",
     "luggage": "Luggage",
-    "door": "Door",
+    "door": "Doors",
     "gear": "Gear",
+    "fuel": "Fuel",
+    "airCondition": "Air Conditioning",
     "cta": {
       "prefix": "From"
     }
