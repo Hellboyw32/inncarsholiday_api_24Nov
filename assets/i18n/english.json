@@ -240,7 +240,7 @@
   "ForCancellation": "For Cancellation",
   "CancellationCanBeMade": "Cancellation can be made through the",
   "Section": "section",
-  "WorkingHoursValue" : "Monday-Sunday",
+  "WorkingHoursValue": "Monday-Sunday",
 
   "_comment7": "------------below keys are for login page------------",
 
@@ -340,5 +340,10 @@
       "title": "100% Secure Payments",
       "description": "All major Credit & Debit cards accepted"
     }
+  },
+
+  "-----------comment11": "--------Toasters----------",
+  "Toasters": {
+    "bookingSuccess": "Booking Add successfully"
   }
 }
