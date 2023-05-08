@@ -813,31 +813,48 @@ router.get("/improvisedefault/list/", function (request, response) {
   var totalDays = calculateDays(request.query.startdate, request.query.enddate);
   var filterQuery = "";
   filterQuery +=
-  "SELECT CReg.Id as 'Id', CReg.VenderId as 'AgencyId', CReg.IsInStock as 'IsInStock', CReg.ComissionPercentage as 'Comission', CReg.PlateNo as 'PlateNo',  CReg.ImageType as 'ImageType', CReg.LargeImageType as 'LargeImageType',"
-  +" CReg.SmallImageType as 'SmallImageType', CReg.CarTypeId as 'CarType', CReg.WhyRecommendedText as 'WhyRecommendedText', CReg.IsBestSeller as 'IsBestSeller', CReg.IsExcellentDeal as 'IsExcellentDeal', CReg.IsRecommended as 'IsRecommended',"
-  +" CReg.FuelTypeId as 'FuelType', Cmod.Name as 'Model.Name', CMod.Capacity as 'Model.Capacity', CMod.Doors as 'Model.Doors', CMod.TransmissionTypeId as 'Model.TransmissionTypeId',"
-  +" CMod.BigPieceLuggage as 'Model.BigPieceLuggage', CMod.SmallPieceLuggage as 'Model.SmallPieceLuggage',"
-  +" CPrice.Price as 'Price', CPrice.BeforeDiscountPrice as 'Discount', CPrice.Id as CPID, tt.Name as 'TransmissionTypeName', "
-  +" CM.Name as 'CarMake', CM.Id as 'CarMakeId',"
-  +" DL.Cities as 'DealCities', DL.DiscountPercentage as 'DiscountPercentage',"
-  +" AG.Name as 'Agency.Name', AG.LogoPath as 'Agency.Logo', AG.Description as 'Agency.Description', AG.Abbreviation as 'Agency.Abbreviation',"
-  +" CovT.Name as 'Insurance.Name', "
-  +" CovT.Price as 'Insurance.Price',"
-  +" (SELECT Round(AVG(Rating), 0) FROM ratereview as rr WHERE rr.VendorId = AG.Id) AS 'Agency.AvgScore' "
-  +" FROM Phcarrental.CarRegistration AS CReg "
-  +" INNER JOIN CarModel as CMod ON CReg.CarModelId = CMod.Id AND CMod.IsActive = true "
-  +" Inner Join CoverageType as CovT On CReg.InsuranceTypeId = CovT.Id AND CovT.IsActive = true" 
-  +" Inner Join Agency as AG On CReg.VenderId = AG.Id AND AG.IsActive = true "
-  +" left Join (Phcarrental.DealSummery as DS Inner Join Deal as DL on DL.Id = DS.DealId AND DATE(DL.From) <= '"+
-  request.query.startdate + "' AND DATE(DL.To) >= '"+request.query.enddate+"' And DL.IsActive = true) On CReg.Id "
-  +" = DS.CarRegistrationId "
-  +" Inner Join (SELECT carprice.CarRegistrationId, carprice.Id, carprice.Price, carprice.BeforeDiscountPrice, carprice.IsActive FROM carrentalprice as carprice INNER JOIN (SELECT max(FromDay) as FromDay, max(carrentalprice.From) as FromDate, CarRegistrationId, IsActive FROM carrentalprice WHERE IsActive = true GROUP BY CarRegistrationId) AS cp ON cp.CarRegistrationId = carprice.CarRegistrationId AND carprice.CarRegistrationId "
-  +" In (SELECT CarRegistrationId FROM carrentalprice WHERE IsActive = true  AND carprice.IsActive = cp.IsActive )) AS CPrice On CReg.Id = CPrice.CarRegistrationId AND CPrice.IsActive = true"
-   +" Inner Join CarType as CT On CReg.CarTypeId = CT.Id AND CT.IsActive = true"
-   +" Inner Join transmissiontypes as tt On CMod.TransmissionTypeId = tt.Id"
-   +" Inner Join CarMake as CM On CMod.CarMakeId = CM.Id AND CM.IsActive = true"
-   +" WHERE CReg.Id IN (SELECT "
-  +" CarRegistrationId FROM CarCity WHERE CityId = "+request.query.cityid+") AND CReg.IsActive = true AND CReg.IsInStock = true";
+  "SELECT CReg.Id as 'Id', CReg.VenderId as 'AgencyId', CReg.IsInStock as 'IsInStock', CReg.ComissionPercentage as 'Comission', CReg.PlateNo as 'PlateNo', " +
+    " CReg.ImageType as 'ImageType', CReg.LargeImageType as 'LargeImageType', CReg.SmallImageType as 'SmallImageType', CReg.CarTypeId as 'CarType', CReg.WhyRecommendedText as 'WhyRecommendedText'," +
+    " CReg.IsBestSeller as 'IsBestSeller', CReg.IsExcellentDeal as 'IsExcellentDeal', CReg.IsRecommended as 'IsRecommended', CReg.FuelTypeId as 'FuelType'," +
+    " Cmod.Name as 'Model.Name', CMod.Capacity as 'Model.Capacity', CMod.Doors as 'Model.Doors', CMod.TransmissionTypeId as 'Model.TransmissionTypeId'," +
+    " CMod.BigPieceLuggage as 'Model.BigPieceLuggage', CMod.SmallPieceLuggage as 'Model.SmallPieceLuggage'," +
+    " CPrice.Price as 'Price', CPrice.BeforeDiscountPrice as 'Discount', CPrice.Id as CPID, tt.Name as 'TransmissionTypeName', CM.Name as 'CarMake', CM.Id as 'CarMakeId'," +
+    " DL.Cities as 'DealCities', DL.DiscountPercentage as 'DiscountPercentage'," +
+    " AG.Name as 'Agency.Name', AG.LogoPath as 'Agency.Logo', AG.Description as 'Agency.Description', AG.Abbreviation as 'Agency.Abbreviation'," +
+    " CovT.Name as 'Insurance.Name', CovT.Price as 'Insurance.Price'," +
+    " (SELECT Round(AVG(Rating), 0) FROM ratereview as rr WHERE rr.VendorId = AG.Id) AS 'Agency.AvgScore'" +
+    " FROM CarRegistration AS CReg INNER JOIN CarModel as CMod ON CReg.CarModelId = CMod.Id AND CMod.IsActive = true" +
+    " Inner Join CoverageType as CovT On CReg.InsuranceTypeId = CovT.Id AND CovT.IsActive = true" +
+    " Inner Join Agency as AG On CReg.VenderId = AG.Id AND AG.IsActive = true" +
+    " left Join (DealSummery as DS" +
+    " Inner Join Deal as DL on DL.Id = DS.DealId AND DATE(DL.From) <= '" +
+    request.query.startdate +
+    "' AND DATE(DL.To) >= '" +
+    request.query.enddate +
+    "' And DL.IsActive = true) On CReg.Id = DS.CarRegistrationId" +
+    // " Inner Join CarRentalPrice as CP On CReg.Id = CP.CarRegistrationId AND CP.IsActive = true" +
+    " Inner Join (SELECT carprice.CarRegistrationId, carprice.Id, carprice.Price, carprice.BeforeDiscountPrice, carprice.IsActive FROM carrentalprice as carprice INNER JOIN" +
+    " (SELECT max(FromDay) as FromDay, max(carrentalprice.From) as FromDate, CarRegistrationId, IsActive FROM carrentalprice WHERE carrentalprice.From <= '" +
+    request.query.startdate +
+    "' AND IsActive = true AND FromDay <= " +
+    totalDays +
+    " AND FromDay is not null AND FromDay > 0 GROUP BY CarRegistrationId) AS cp" +
+    " ON cp.CarRegistrationId = carprice.CarRegistrationId AND carprice.FromDay = cp.FromDay AND carprice.CarRegistrationId In (SELECT CarRegistrationId FROM carrentalprice WHERE IsActive = true AND carrentalprice.To >= '" +
+    request.query.enddate +
+    "' AND carprice.IsActive = cp.IsActive AND carprice.From = cp.FromDate  AND carprice.FromDay = cp.FromDay)) AS CPrice On CReg.Id = CPrice.CarRegistrationId AND CPrice.IsActive = true" +
+    " Inner Join CarType as CT On CReg.CarTypeId = CT.Id AND CT.IsActive = true" +
+    " Inner Join transmissiontypes as tt On CMod.TransmissionTypeId = tt.Id" +
+    " Inner Join CarMake as CM On CMod.CarMakeId = CM.Id AND CM.IsActive = true" +
+    " WHERE CReg.Id NOT IN (SELECT CarRegistrationId" +
+    " FROM carrental WHERE '" +
+    request.query.enddate +
+    "' >= Date(BookingTo) AND '" +
+    request.query.startdate +
+    "' <= Date(BookingFrom) AND (PaymentStatusId = 2 OR PaymentStatusId = 3) AND (BookedStatusId = 1 OR BookedStatusId = 2) AND IsActive = true" +
+    " group by CarRegistrationId) AND CReg.Id IN (SELECT CarRegistrationId FROM CarCity WHERE CityId = " +
+    request.query.cityid +
+    ")" +
+    " AND CReg.IsActive = true AND CReg.IsInStock = true";
 //console.log("query===========",filterQuery);
   CarRental.sequelize
     .query(filterQuery, {
