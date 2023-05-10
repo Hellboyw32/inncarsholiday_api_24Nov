@@ -270,9 +270,10 @@
   "CompletedBookings": "Réservations terminées",
   "Testimonial": "Témoignage",
   "Reservationsterminees": "Réservations terminées",
-  "Favorites": "Favorites",
+  "Favorites": "Favoris",
   "NODATAFOUND": "AUCUNE DONNÉE DISPONIBLE!",
   "AUCUNEDONNEEDISPONIBLE": "AUCUNE DONNÉE DISPONIBLE!",
+  "CancelBooking": "Annuler la réservation",
   "ReservationAnnuler": "Réservation Annuler",
   "Voiture": "Voiture",
   "Reservation": "Réservation",
@@ -362,6 +363,7 @@
 
   "-----------comment11": "--------Toasters----------",
   "Toasters": {
-    "bookingSuccess": "Réservation Ajouter avec succès"
+    "bookingSuccess": "Réservation Ajouter avec succès",
+    "paymentSuccess": "Paiement effectué avec succès"
   }
 }
