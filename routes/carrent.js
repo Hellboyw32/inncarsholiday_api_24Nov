@@ -18,16 +18,16 @@ const {
   CarMake,
   BookedPercentage,
   CarBookingStats,
-  TransmissionTypes
+  TransmissionTypes,
 } = require("../config/database");
 var router = express.Router();
 var Sequelize = require("sequelize");
-const axios = require('axios')
-const https = require('https');
+const axios = require("axios");
+const https = require("https");
 const axiosInstance = axios.create({
   httpsAgent: new https.Agent({
-    rejectUnauthorized: false
-  })
+    rejectUnauthorized: false,
+  }),
 });
 //All
 router.get("/", function (request, response) {
@@ -177,7 +177,11 @@ router.get("/paging/all", function (request, response) {
     include: [
       { model: BookingStatus },
       { model: PaymentStatus },
-      { model: CarRegistration, required: true, include: [{ model: CarModel, where: {IsActive: true } }] },
+      {
+        model: CarRegistration,
+        required: true,
+        include: [{ model: CarModel, where: { IsActive: true } }],
+      },
       { model: User, include: [{ model: UserProfile }] },
     ],
     order: [["CreatedOn", "DESC"]],
@@ -319,7 +323,7 @@ function updatePercentage(percentage) {
         return res;
       }
     })
-    .catch((err) => { });
+    .catch((err) => {});
 }
 
 function getRandomNumber(minimum, maximum) {
@@ -429,7 +433,7 @@ function updateBookingData(bookingData) {
         return res;
       }
     })
-    .catch((err) => { });
+    .catch((err) => {});
 }
 
 //Get By location
@@ -501,7 +505,7 @@ router.post("/getByUser", function (request, response) {
     include: [
       {
         model: CarRentalPrice,
-        where: { IsActive: true }
+        where: { IsActive: true },
       },
       { model: BookingStatus },
       { model: PaymentStatus },
@@ -575,7 +579,7 @@ router.post("/create", function (request, response) {
         result.data = res;
         result.returnMessage = "Success";
         response.json(result);
-      })
+      });
     })
     .catch((err) => {
       console.log(err);
@@ -586,16 +590,18 @@ router.post("/create", function (request, response) {
 });
 
 function optionalCover(id, model) {
-  model.forEach((element) => {
-    var obj = {};
-    obj.CarRentalId = id;
-    obj.OptionalCoverId = element.Id;
-    obj.OptionalValue = element.OptionalValue;
-    obj.Amount = element.Amount;
-    obj.IsActive = true;
-    obj.CreatedOn = new Date();
-    CarRentalOptionalCover.create(obj);
-  });
+  if (model.length !== 0) {
+    model.forEach((element) => {
+      var obj = {};
+      obj.CarRentalId = id;
+      obj.OptionalCoverId = element.Id;
+      obj.OptionalValue = element.OptionalValue;
+      obj.Amount = element.Amount;
+      obj.IsActive = true;
+      obj.CreatedOn = new Date();
+      CarRentalOptionalCover.create(obj);
+    });
+  }
 }
 
 router.post("/update/:id", function (request, response) {
@@ -633,23 +639,25 @@ router.post("/update/:id", function (request, response) {
 });
 
 function createVendorPayment(rentalResult) {
-  CarRegistration.findByPk(rentalResult.CarRegistrationId).then((res) => {
-    if (res) {
-      let vpayment = {
-        Id: 0,
-        CarRentalId: rentalResult.Id,
-        UpFrontPaid: rentalResult.AmountPaid,
-        Commission: res.ComissionPercentage,
-        DueAmount:
-          rentalResult.BookingAmount -
-          (res.ComissionPercentage / 100) * rentalResult.BookingAmount,
-        IsActive: true,
-      };
-      VendorPayment.create(vpayment).then((pay) => {
-        console.log("Vendor payment has been created!", pay);
-      });
-    }
-  }).catch((error) => console.log(error));
+  CarRegistration.findByPk(rentalResult.CarRegistrationId)
+    .then((res) => {
+      if (res) {
+        let vpayment = {
+          Id: 0,
+          CarRentalId: rentalResult.Id,
+          UpFrontPaid: rentalResult.AmountPaid,
+          Commission: res.ComissionPercentage,
+          DueAmount:
+            rentalResult.BookingAmount -
+            (res.ComissionPercentage / 100) * rentalResult.BookingAmount,
+          IsActive: true,
+        };
+        VendorPayment.create(vpayment).then((pay) => {
+          console.log("Vendor payment has been created!", pay);
+        });
+      }
+    })
+    .catch((error) => console.log(error));
 }
 
 function postExternalDB(carRentalId) {
@@ -657,12 +665,21 @@ function postExternalDB(carRentalId) {
   console.log("externalModelId", carRentalId);
   // let totalDays = calculateDays(externalModel.BookingFrom, externalModel.BookingTo);
 
-  DriverDetail.findOne({ where: { CarRentalId: carRentalId }, include: [{ model: CarRental }] }).then((res) => {
+  DriverDetail.findOne({
+    where: { CarRentalId: carRentalId },
+    include: [{ model: CarRental }],
+  }).then((res) => {
     createVendorPayment(res.CarRental);
-    let totalDays = calculateDays(res.CarRental.BookingFrom, res.CarRental.BookingTo);
+    let totalDays = calculateDays(
+      res.CarRental.BookingFrom,
+      res.CarRental.BookingTo
+    );
     axiosInstance
       .post("https://api.inncarsholiday.com/api/booking", {
-        CreatedBy: res.CarRental.BookedById > 0 ? "Admin" : (res.FirstName + " " + res.LastName),
+        CreatedBy:
+          res.CarRental.BookedById > 0
+            ? "Admin"
+            : res.FirstName + " " + res.LastName,
         CustomerName: res.FirstName + " " + res.LastName,
         ContactDetails: res.Email + ", " + res.PhoneNumber,
         FlightNo: res.FlightNumber,
@@ -689,7 +706,7 @@ function postExternalDB(carRentalId) {
       .catch((error) => {
         console.error(error);
       });
-  })
+  });
 }
 
 router.post("/UpdateTransaction", function (request, response) {
@@ -762,20 +779,24 @@ router.post("/delete/:id", function (request, response) {
         res.IsActive = false;
         res.save().then(
           (resSave) => {
-            let tempUrl = "https://api.inncarsholiday.com/api/booking?referenceNo=" + res.BookingId;
+            let tempUrl =
+              "https://api.inncarsholiday.com/api/booking?referenceNo=" +
+              res.BookingId;
             deleteVendorPayment(request.params.id);
             axiosInstance
-            .delete(tempUrl).then(() => {
-              result.data = true;
-              result.returnMessage = "Success";
-              response.json(result);
-            }).catch((error) => {
-              result.returnCode = 1;
-              result.data = true;
-              console.log(error)
-              result.returnMessage = "External API error";
-              response.json(result);
-            })
+              .delete(tempUrl)
+              .then(() => {
+                result.data = true;
+                result.returnMessage = "Success";
+                response.json(result);
+              })
+              .catch((error) => {
+                result.returnCode = 1;
+                result.data = true;
+                console.log(error);
+                result.returnMessage = "External API error";
+                response.json(result);
+              });
           },
           (error) => {
             deleteVendorPayment(request.params.id);
@@ -826,22 +847,26 @@ router.post("/cancelbooking/:id", function (request, response) {
   CarRental.findByPk(request.params.id)
     .then((res) => {
       if (res != null) {
-        let tempUrl = "https://api.inncarsholiday.com/api/booking?referenceNo=" + res.BookingId;
+        let tempUrl =
+          "https://api.inncarsholiday.com/api/booking?referenceNo=" +
+          res.BookingId;
         res.BookedStatusId = 3;
         res.save();
         deleteVendorPayment(request.params.id);
         axiosInstance
-        .delete(tempUrl).then(() => {
-          result.data = true;
-          result.returnMessage = "Success";
-          response.json(result);
-        }).catch((error) => {
-          result.returnCode = 1;
-          result.data = true;
-          console.log(error)
-          result.returnMessage = "External API error";
-          response.json(result);
-        })
+          .delete(tempUrl)
+          .then(() => {
+            result.data = true;
+            result.returnMessage = "Success";
+            response.json(result);
+          })
+          .catch((error) => {
+            result.returnCode = 1;
+            result.data = true;
+            console.log(error);
+            result.returnMessage = "External API error";
+            response.json(result);
+          });
       }
     })
     .catch((err) => {
