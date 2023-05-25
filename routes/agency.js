@@ -170,6 +170,7 @@ router.put("/update/:id", function (request, response) {
       LogoPath: request.body.LogoPath,
       CityId: request.body.CityId,
       Description: request.body.Description,
+      Description_French: request.body.Description_French,
       Abbreviation: request.body.Abbreviation,
     },
     { where: { Id: request.params.id } }

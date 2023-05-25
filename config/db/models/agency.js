@@ -51,6 +51,10 @@ const Agency = sequelize.define(
       type: Sequelize.STRING,
       allowNull: true,
     },
+    Description_French: {
+      type: Sequelize.STRING,
+      allowNull: true,
+    },
   },
   globalOptions
 );
