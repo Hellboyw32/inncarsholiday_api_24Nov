@@ -61,6 +61,10 @@ const CarType = sequelize.define("CarType", {
         type: Sequelize.BIGINT,
         allowNull: true
     },
+    InsuranceTC_French: {
+        type: Sequelize.TEXT,
+        allowNull: true
+    },
 
 }, globalOptions);
 

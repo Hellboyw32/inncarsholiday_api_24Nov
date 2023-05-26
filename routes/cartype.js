@@ -122,6 +122,7 @@ router.post("/update", (req, response) => {
       cartype.LargeImage = req.body.LargeImage;
       cartype.SmallImage = req.body.SmallImage;
       cartype.InsuranceTC = req.body.InsuranceTC;
+      cartype.InsuranceTC_French = req.body.InsuranceTC_French;
       cartype.IsActive = req.body.IsActive;
       cartype.ExcessAmount = req.body.ExcessAmount;
       cartype.GuaranteeAmount = req.body.GuaranteeAmount;
