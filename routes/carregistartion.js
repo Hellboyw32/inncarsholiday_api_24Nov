@@ -820,7 +820,7 @@ router.get("/improvisedefault/list/", function (request, response) {
     " CMod.BigPieceLuggage as 'Model.BigPieceLuggage', CMod.SmallPieceLuggage as 'Model.SmallPieceLuggage'," +
     " CPrice.Price as 'Price', CPrice.BeforeDiscountPrice as 'Discount', CPrice.Id as CPID, tt.Name as 'TransmissionTypeName', CM.Name as 'CarMake', CM.Id as 'CarMakeId'," +
     " DL.Cities as 'DealCities', DL.DiscountPercentage as 'DiscountPercentage'," +
-    " AG.Name as 'Agency.Name', AG.LogoPath as 'Agency.Logo', AG.Description as 'Agency.Description', AG.Abbreviation as 'Agency.Abbreviation'," +
+    " AG.Name as 'Agency.Name', AG.LogoPath as 'Agency.Logo', AG.Description as 'Agency.Description', AG.Description_French as 'Agency.Description_French', AG.Abbreviation as 'Agency.Abbreviation'," +
     " CovT.Name as 'Insurance.Name', CovT.Price as 'Insurance.Price'," +
     " (SELECT Round(AVG(Rating), 0) FROM ratereview as rr WHERE rr.VendorId = AG.Id) AS 'Agency.AvgScore'" +
     " FROM CarRegistration AS CReg INNER JOIN CarModel as CMod ON CReg.CarModelId = CMod.Id AND CMod.IsActive = true" +
