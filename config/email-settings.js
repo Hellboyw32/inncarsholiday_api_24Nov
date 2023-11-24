@@ -3,8 +3,8 @@ const fs = require("fs");
 const transport = require('nodemailer-smtp-transport');
 
 const smtpTransport = nodemailer.createTransport(transport({
-   name:"web1-mu1.cloud.mu",
-    host: "102.222.106.240",
+   name:"web2-mu1.cloud.mu",
+    host: "102.222.106.220",
     port: 465,
     secure: true,
     logger: true,
@@ -12,8 +12,8 @@ const smtpTransport = nodemailer.createTransport(transport({
     debug: false,
     ignoreTLS: true, 
     auth: {
-      user: "booking@inncarsholiday.com",
-      pass: "bookMe@123Inncars"
+      user: "info@inncarsholiday.com",
+      pass: "view4meinfo"
     },
     tls: {
         rejectUnauthorized: false
