@@ -25,8 +25,8 @@ const {
 // const { print } = require("util");
 
 var transporter = nodemailer.createTransport(smtpTransporter({
-  name:"hostgator",
-  host: "102.222.106.240",
+  name:"web2-mu1.cloud.mu",
+  host: "102.222.106.220",
   port: 465,
   secure: true,
   logger: true,
@@ -34,7 +34,7 @@ var transporter = nodemailer.createTransport(smtpTransporter({
   debug: false,
   ignoreTLS: true, 
   auth: {
-    user: "booking@inncarsholiday.com",
+    user: "info@inncarsholiday.com",
     pass: "bookMe@123Inncars"
   },
   tls: {
@@ -227,7 +227,7 @@ router.post("/sendtosubscriber", function (request, response) {
   let result = { returnCode: 0, data: null, returnMessage: "" };
   console.log("Access Token", accessToken);
   const mailOptions = {
-    from: "booking@inncarsholiday.com",
+    from: "info@inncarsholiday.com",
     to: request.body.To,
     subject: request.body.Subject,
     generateTextFromHTML: true,
@@ -252,10 +252,10 @@ router.post("/sendtosubscriber", function (request, response) {
 router.post("/sendRevert", function (request, response) {
   let result = { returnCode: 0, data: null, returnMessage: "" };
   const mailOptions = {
-    from: "booking@inncarsholiday.com",
+    from: "info@inncarsholiday.com",
     to: request.body.To,
     subject: request.body.Subject,
-    cc: ["info@mauriconnect.com", "booking@inncarsholiday.com"],
+    cc: ["info@mauriconnect.com", "info@inncarsholiday.com"],
     text: request.body.Message,
   };
   smtpTransport.sendMail(mailOptions, (error, res) => {
@@ -285,8 +285,8 @@ router.post("/sendRevert", function (request, response) {
 router.post("/postcontact", function (request, response) {
   let result = { returnCode: 0, data: null, returnMessage: "" };
   const mailOptions = {
-    from: "booking@inncarsholiday.com",
-    to: "booking@inncarsholiday.com",
+    from: "info@inncarsholiday.com",
+    to: "info@inncarsholiday.com",
     subject: "Customer Enquiry From: " + request.body.Email,
     cc: ["info@mauriconnect.com", "booking@inncarsholiday.com",request.body.Email],
     text: request.body.Message,
